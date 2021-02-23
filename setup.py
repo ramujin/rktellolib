@@ -9,7 +9,7 @@ setup(
   author='Ramsin Khoshabeh',
   author_email='ramsin@ucsd.edu',
   url='https://github.com/ramujin',
-  # download_url='https://github.com/ramujin/rktellolib/archive/1.0.0.tar.gz',
+  download_url='https://github.com/ramujin/rktellolib/archive/v1.0.0.tar.gz',
   keywords=['ryze', 'tello', 'dji', 'drone', 'sdk', 'official sdk'],
   install_requires=[
     'opencv-python',
