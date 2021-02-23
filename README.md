@@ -1,6 +1,6 @@
 # RKTelloLib
 
-### In light of the many poorly-designed libraries to interact with the DJI (Ryze) Tello Drone that either do way more than they should or don't do enough, I have taken the initiative to create this small library. It's a simple interface built upon the official [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) that allows you to control and interact with the drone with minimal effort.
+### In light of the many poorly-designed libraries to interact with the DJI (Ryze) Tello drone that either do way more than they should or don't do enough, I have taken the initiative to create this small library. It's a simple interface built upon the official [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) that allows you to control and interact with the drone with minimal effort.
 
 
 ## Installation

@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 setup(
   name='rktellolib',
   packages=find_packages(include=['rktellolib']),
-  version='0.1.0',
+  version='1.0.0',
   license='MIT',
   description='A simple library to interface with the DJI Tello drone',
   author='Ramsin Khoshabeh',
