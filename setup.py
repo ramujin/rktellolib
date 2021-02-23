@@ -1,11 +1,16 @@
 from setuptools import find_packages, setup
 
+with open("README.md", "r", encoding="utf-8") as fh:
+  long_description = fh.read()
+
 setup(
   name='rktellolib',
   packages=find_packages(include=['rktellolib']),
   version='1.0.0',
   license='MIT',
   description='A simple library to interface with the DJI Tello drone',
+  long_description=long_description,
+  long_description_content_type="text/markdown",
   author='Ramsin Khoshabeh',
   author_email='ramsin@ucsd.edu',
   url='https://github.com/ramujin',
