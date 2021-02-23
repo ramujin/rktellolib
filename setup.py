@@ -1,12 +1,14 @@
 from setuptools import find_packages, setup
 
+version = '1.0.1'
+
 with open("README.md", "r", encoding="utf-8") as fh:
   long_description = fh.read()
 
 setup(
   name='rktellolib',
   packages=find_packages(include=['rktellolib']),
-  version='1.0.0',
+  version=version,
   license='MIT',
   description='A simple library to interface with the DJI Tello drone',
   long_description=long_description,
@@ -14,7 +16,7 @@ setup(
   author='Ramsin Khoshabeh',
   author_email='ramsin@ucsd.edu',
   url='https://github.com/ramujin',
-  download_url='https://github.com/ramujin/rktellolib/archive/v1.0.0.tar.gz',
+  download_url='https://github.com/ramujin/rktellolib/archive/v{}.tar.gz'.format(version),
   keywords=['dji', 'tello', 'ryze', 'drone', 'sdk', 'official sdk'],
   install_requires=[
     'opencv-python',
