@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-version = '1.0.1'
+version = '1.0.2'
 
 with open("README.md", "r", encoding="utf-8") as fh:
   long_description = fh.read()
@@ -15,7 +15,7 @@ setup(
   long_description_content_type="text/markdown",
   author='Ramsin Khoshabeh',
   author_email='ramsin@ucsd.edu',
-  url='https://github.com/ramujin',
+  url='https://github.com/ramujin/rktellolib',
   download_url='https://github.com/ramujin/rktellolib/archive/v{}.tar.gz'.format(version),
   keywords=['dji', 'tello', 'ryze', 'drone', 'sdk', 'official sdk'],
   install_requires=[

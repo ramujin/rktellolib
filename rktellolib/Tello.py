@@ -8,12 +8,12 @@ Class Description:
   It utilizes the three classes TelloCommand, TelloState, and TelloCam to provide interfaces with the drone.
 Public Attributes: None
 Public Methods:
-  - Operational: connect/disconnect/takeoff/land
-  - Discrete action: up/down/left/right/forward/back/cw/ccw
+  - Operational: connect, disconnect, takeoff, land
+  - Discrete action: up, down, left, right, forward, back, cw, ccw
   - RC control: rc
   - Camera: get_frame
-  - State (all states in a single string): get_state
   - States:
+    - General: get_states, get_state
     - System & Environment: get_battery, get_flight_time, get_temp, get_barometer,
     - Positional: get_height, get_distance_tof, get_ax, get_ay, get_az, get_vx, get_vy, get_vz
     - Rotational: get_roll, get_pitch, get_yaw
@@ -117,41 +117,45 @@ class Tello():
   Methods to retrieve the drone state
   """
   # Get all state fields as a single string
-  def get_state(self):
+  def get_states(self):
     return self.__state.get()
+
+  # Get any state specified by the string 'field'
+  def get_state(self, field: str):
+    return self.__state.get(field)
 
   # Get system and environment states
   def get_battery(self):
-    return self.__state.get('bat')
+    return self.get_state('bat')
   def get_flight_time(self):
-    return self.__state.get('time')
+    return self.get_state('time')
   def get_temp(self):
-    return (self.__state.get('temph') + self.__state.get('templ')) / 2
+    return (self.get_state('temph') + self.get_state('templ')) / 2
   def get_barometer(self):
-    return self.__state.get('baro')
+    return self.get_state('baro')
 
   # Get positional state
   def get_height(self):
-    return self.__state.get('h')
+    return self.get_state('h')
   def get_distance_tof(self):
-    return self.__state.get('tof')
+    return self.get_state('tof')
   def get_ax(self):
-    return self.__state.get('agx')
+    return self.get_state('agx')
   def get_ay(self):
-    return self.__state.get('agy')
+    return self.get_state('agy')
   def get_az(self):
-    return self.__state.get('agz')
+    return self.get_state('agz')
   def get_vx(self):
-    return self.__state.get('vgx')
+    return self.get_state('vgx')
   def get_vy(self):
-    return self.__state.get('vgy')
+    return self.get_state('vgy')
   def get_vz(self):
-    return self.__state.get('vgz')
+    return self.get_state('vgz')
 
   # Get rotational state
   def get_roll(self):
-    return self.__state.get('roll')
+    return self.get_state('roll')
   def get_pitch(self):
-    return self.__state.get('pitch')
+    return self.get_state('pitch')
   def get_yaw(self):
-    return self.__state.get('yaw')
+    return self.get_state('yaw')

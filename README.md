@@ -90,17 +90,19 @@ rc(v_lr: int, v_fb: int, v_ud: int, v_yaw: int)
 # Camera Command
 get_frame()
 
-# State Retrieval Commands
-# All States
-get_state()
+# Retrieve All Drone State Information
+get_states()
 
-# System & Environment States
+# Retrieve a Specific State
+get_state(field: str)
+
+# Retrieve System & Environment States
 get_battery()
 get_flight_time()
 get_temp()
 get_barometer()
 
-# Positional States
+# Retrieve Positional States
 get_height()
 get_distance_tof()
 get_ax()
@@ -110,7 +112,8 @@ get_vx()
 get_vy()
 get_vz()
 
-# Rotational States
+# Retrieve Rotational States
 get_roll()
 get_pitch()
 get_yaw()
+```

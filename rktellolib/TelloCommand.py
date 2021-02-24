@@ -67,12 +67,13 @@ class TelloCommand:
   Begin drone communication
   """
   def start(self):
-    # Set drone in command mode
-    self.__socket.sendto('command'.encode('utf-8'), (self.__IP,self.__PORT))
-
     # Start the receive thread
     self.__thread_started = True
     self.__thread.start()
+
+    # Set drone in command mode
+    if self.send('command') != "ok":
+      raise Exception('[TelloCommand] Failed to connect to the Tello drone.')
 
   """
   Stop drone communication
@@ -101,7 +102,7 @@ class TelloCommand:
     timestamp = time.time()
     while not self.__current_response:
       if time.time() - timestamp > self.__TIMEOUT:
-        print('[TelloCommand] Timeout. Aborting Command: \'{}\''.format(command))
+        print('[TelloCommand] Timeout. Aborting Command: \'{}\'.'.format(command))
         return None
       time.sleep(0.1)
 

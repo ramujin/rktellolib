@@ -83,10 +83,12 @@ class TelloState:
   """
   Get the drone state
   Argument: if a field is supplied, retrieve only that specific value
-  Return: String containing the requested state
+  Return: String containing the requested state or None if no state
   """
   def get(self, field:str = None):
-    if field is None:
+    if self.__current_state is None:
+      return None
+    elif field is None:
       return self.__current_state
     else:
       return self.__get_state_field(field)
