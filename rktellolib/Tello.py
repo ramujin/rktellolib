@@ -78,6 +78,10 @@ class Tello():
       self.__is_flying = False
     return response
 
+  # Keep the connection alive (prevent the drone from landing)
+  def keep_alive(self):
+    self.__command.send('battery?')
+
   """
   Discrete action commands
   """
@@ -125,8 +129,9 @@ class Tello():
     return self.__state.get(field)
 
   # Get system and environment states
+  # TODO: switch get_battery() back to passive and have users call keep_alive() in the future
   def get_battery(self):
-    return self.get_state('bat')
+    return self.__command.send('battery?') # return self.get_state('bat')
   def get_flight_time(self):
     return self.get_state('time')
   def get_temp(self):
