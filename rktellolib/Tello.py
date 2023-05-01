@@ -1,6 +1,7 @@
 from rktellolib.TelloCommand import TelloCommand
 from rktellolib.TelloState import TelloState
 from rktellolib.TelloCam import TelloCam
+from typing import Callable
 
 """
 Class Description:
@@ -29,12 +30,13 @@ class Tello():
 
   """
   Constructor that instantiates the needed objects
+  Argument: state_callback - A Callable that will receive the drone state on a separate thread 
   """
-  def __init__(self, debug: bool=False, has_video: bool=False):
+  def __init__(self, debug: bool=False, has_video: bool=False, state_callback: Callable[[str],None]=None):
     self.__has_video = has_video
 
     self.__command = TelloCommand(debug)
-    self.__state = TelloState(debug)
+    self.__state = TelloState(debug, state_callback)
 
     if has_video:
       self.__cam = TelloCam()

@@ -1,6 +1,7 @@
 import time
 import socket
 from threading import Thread
+from typing import Callable
 
 """
 Class Description:
@@ -25,7 +26,7 @@ class TelloState:
   """
   Constructor that creates the thread to receive responses
   """
-  def __init__(self, debug: bool=True):
+  def __init__(self, debug: bool=True, callback: Callable[[str],None]=None):
     self.__debug = debug
 
     # Open local UDP port for Tello communication
@@ -35,6 +36,9 @@ class TelloState:
 
     # Bind the thread to receive responses from the drone
     self.__thread = Thread(target=self.__thread_function, daemon=True)
+
+    # Set callback to send most recent state from the drone
+    self.__callback = callback
 
   """
   Destructor that only closes the socket when the object is deleted because sockets are not thread safe
@@ -54,6 +58,8 @@ class TelloState:
         if self.__debug:
           print('[TelloState]: {}'.format(state))
         self.__current_state = state.decode("utf-8").rstrip("\r\n")
+        if self.__callback:
+          self.__callback(self.__current_state)
       except (UnicodeDecodeError, socket.error) as err:
         print('[TelloState] Error: {}'.format(err))
 
